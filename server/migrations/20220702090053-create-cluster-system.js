@@ -18,7 +18,11 @@ module.exports = {
         type: Sequelize.STRING
       },
       clusterList: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        references : {
+          model : "cinemasystems",
+          key : "id"
+        }
       },
       createdAt: {
         allowNull: false,
