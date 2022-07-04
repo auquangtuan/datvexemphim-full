@@ -1,5 +1,5 @@
 const { Op } = require("sequelize")
-const { ClusterSystem } = require("../models")
+const { ClusterSystem , CinemaDoor} = require("../models")
 
 const getAllClusterSystem = async (req, res) => {
     const limit = parseInt(req.query.limit)
@@ -30,7 +30,51 @@ const createClusterSystem = async (req, res) => {
     const createCluster = await ClusterSystem.create({clusterCode ,clusterName, clusterAddress, clusterList})
     return res.status(201).send(createCluster)
 }
+const getOneClusterSystem = async (req,res) => {
+    const {id} = req.params;
+    const findOneCluster = await ClusterSystem.findOne({
+        where : {
+            id
+        },
+        include : [
+            {
+                model : CinemaDoor
+            }
+        ]
+    })
+    return res.status(200).send(findOneCluster)
+}
+const updateClusterSystem = async (req, res) => {
+    const { id } = req.params
+    const { clusterCode, clusterName, clusterAddress, clusterList } = req.body
+    const updateCluster = await ClusterSystem.findOne({
+        where: {
+            id
+        }
+    })
+    updateCluster.clusterCode = clusterCode
+    updateCluster.clusterName = clusterName
+    updateCluster.clusterAddress = clusterAddress
+    updateCluster.clusterList = clusterList
+    await updateCluster.save()
+    return res.status(200).send(updateCluster)
+
+}
+const deleteClusterSystem = async (req, res) => {
+    const { id } = req.params
+
+    await ClusterSystem.destroy({
+        where: {
+            id
+        }
+    })
+    return res.status(201).send("Xóa Thành Công")
+
+}
 module.exports = {
     getAllClusterSystem,
-    createClusterSystem
+    createClusterSystem,
+    getOneClusterSystem,
+    updateClusterSystem,
+    deleteClusterSystem
 }

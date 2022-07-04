@@ -41,6 +41,7 @@ const getOneCinemaSystem = async (req, res) => {
     return res.status(200).send(oneCinema)
 }
 const createCinemaSystem = async (req, res) => {
+    const {systemCode, systemName, systemAlias, systemLogo} = req.body
     const createCinemaSystem = await CinemaSystem.create({ systemCode, systemName, systemAlias, systemLogo })
     return res.status(201).send(createCinemaSystem)
 }
