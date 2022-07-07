@@ -1,0 +1,108 @@
+.header_container {
+    border-bottom: 1px solid rgba(110, 132, 163, 0.3);
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    height: 80px;
+    max-width: 1280px;
+    margin: 0 auto;
+    .header_menu {
+        list-style-type: none;
+        display: flex;
+
+        li {
+            padding: 12px;
+
+            a {
+                text-decoration: none;
+                font-weight: nomal;
+                color: #6e84a3;
+            }
+        }
+        .svg_menu {
+            width: 24px;
+            height: 16px;
+        }
+    }
+
+    .header_logo {
+        padding: 12px 32px;
+        cursor: pointer;
+    }
+
+    .header_right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .header_form {
+            .header_form_container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                input {
+                    padding: 8px;
+                    border-top-left-radius: 16px;
+                    border-bottom-left-radius: 16px;
+                    border: 1px solid #ccc;
+                    border-right: none;
+                    font-size: 14px;
+                    outline: none;
+                }
+    
+                svg {
+                    height: 39px;
+                    margin-top: 6px;
+                    padding: 8px;
+                    width: 44px;
+                    cursor: pointer;
+                    border: 1px solid #ccc;
+                    border-top-right-radius: 16px;
+                    border-bottom-right-radius: 16px;
+    
+                    &:active {
+                        background-color: #ccc;
+                    }
+                }
+            }
+    
+        }
+    
+        .language {
+            border: 1px solid #6e84a3;
+            padding: 2px 6px;
+            margin: 8px 16px;
+            border-radius: 4px;
+            color: 6e84a3;
+            cursor: pointer;
+            transition: all .3s ease-in-out;
+    
+            &:hover {
+                background-color: #12263f;
+                color: #fff;
+            }
+        }
+    
+        .svg { 
+            margin: 12px;
+            cursor: pointer;
+            .sgv {
+                margin-top: 8px;
+                fill: rgba(110, 132, 163, 1)
+            }
+        }
+        .img_ava {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            margin-top: 8px;
+        }
+    }
+    @media (max-width: 1061px) {
+        .header_menu {
+            display: none;
+        }
+    }
+}
